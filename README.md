@@ -63,8 +63,11 @@ Now you're ready to rumble!
 > Please note that this boilerplate is **production-ready and not meant for beginners**! If you're just starting out with react or redux, please refer to https://github.com/petehunt/react-howto instead. If you want a solid, battle-tested base to build your next product upon and have some experience with react, this is the perfect start for you.
 
 
-## What are the differents?
+## Todos
 
-1. Add redux-logger and immutable transformer
+- [x] redux-logger
+- [ ] redux-act
+- [ ] recompose
+- [ ] immutable-ramda
 
 
