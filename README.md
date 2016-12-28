@@ -67,8 +67,7 @@ Now you're ready to rumble!
 
 - [x] redux-logger
 - [x] redux-act
-- [ ] recompose
-- [ ] immutable-ramda
+- [x] recompose
 - [ ] redux-form
 
 
