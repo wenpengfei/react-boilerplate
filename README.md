@@ -66,7 +66,7 @@ Now you're ready to rumble!
 ## Todos
 
 - [x] redux-logger
-- [ ] redux-act
+- [x] redux-act
 - [ ] recompose
 - [ ] immutable-ramda
 - [ ] redux-form
