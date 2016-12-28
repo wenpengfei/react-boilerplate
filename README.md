@@ -69,5 +69,6 @@ Now you're ready to rumble!
 - [ ] redux-act
 - [ ] recompose
 - [ ] immutable-ramda
+- [ ] redux-form
 
 
