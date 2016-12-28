@@ -5,24 +5,10 @@
  */
 
 import React from 'react';
-import Helmet from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import AtPrefix from './AtPrefix';
-import CenteredSection from './CenteredSection';
-import Form from './Form';
-import H2 from 'components/H2';
 import Input from './Input';
-import List from 'components/List';
-import ListItem from 'components/ListItem';
-import LoadingIndicator from 'components/LoadingIndicator';
-import RepoListItem from 'containers/RepoListItem';
-import Section from './Section';
-import messages from './messages';
-import { loadRepos } from '../App/actions';
-import { changeUsername } from './actions';
 import { selectUsername } from './selectors';
 import { selectRepos, selectLoading, selectError } from 'containers/App/selectors';
 
@@ -46,17 +32,8 @@ const HomePage = ({ username, onChangeUsernameCreator }) => {
 
 HomePage.propTypes = {
   onChangeUsernameCreator: React.PropTypes.func,
+  username: React.PropTypes.string,
 };
-
-// export function mapDispatchToProps(dispatch) {
-//   return {
-//     onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
-//     onSubmitForm: (evt) => {
-//       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-//       dispatch(loadRepos());
-//     },
-//   };
-// }
 
 const mapStateToProps = createStructuredSelector({
   repos: selectRepos(),
@@ -65,8 +42,6 @@ const mapStateToProps = createStructuredSelector({
   error: selectError(),
 });
 
-// Wrap the component to inject dispatch and state into it
-// export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
 export default compose(
   connect(mapStateToProps, (dispatch) => ({
     actions: bindActionCreators(actions, dispatch),
