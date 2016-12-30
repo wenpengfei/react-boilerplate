@@ -2,11 +2,11 @@
  * TEST WEBPACK CONFIGURATION
  */
 
-const webpack = require('webpack');
+const webpack = require('webpack')
 const modules = [
   'app',
   'node_modules',
-];
+]
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -40,7 +40,7 @@ module.exports = {
   plugins: [
 
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
-    // inside your code for any environment checks; UglifyJS will automatically
+    // inside your code for any environment checks UglifyJS will automatically
     // drop any unreachable code.
     new webpack.DefinePlugin({
       'process.env': {
@@ -74,4 +74,4 @@ module.exports = {
       sinon: 'sinon/pkg/sinon',
     },
   },
-};
+}

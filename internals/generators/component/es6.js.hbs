@@ -4,14 +4,14 @@
 *
 */
 
-import React from 'react';
+import React from 'react'
 
 {{#if wantMessages}}
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+import { FormattedMessage } from 'react-intl'
+import messages from './messages'
 {{/if}}
 {{#if wantCSS}}
-import styles from './styles.css';
+import styles from './styles.css'
 {{/if}}
 
 class {{ properCase name }} extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -26,8 +26,8 @@ class {{ properCase name }} extends React.Component { // eslint-disable-line rea
         <FormattedMessage {...messages.header} />
       {{/if}}
       </div>
-    );
+    )
   }
 }
 
-export default {{ properCase name }};
+export default {{ properCase name }}
