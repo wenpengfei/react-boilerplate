@@ -87,12 +87,12 @@ module.exports = {
       })
 
       // Constants
-      actions.push({
-        type: 'add',
-        path: '../../app/containers/{{properCase name}}/constants.js',
-        templateFile: './container/constants.js.hbs',
-        abortOnFail: true,
-      })
+      // actions.push({
+      //   type: 'add',
+      //   path: '../../app/containers/{{properCase name}}/constants.js',
+      //   templateFile: './container/constants.js.hbs',
+      //   abortOnFail: true,
+      // })
 
       // Selectors
       actions.push({
