@@ -113,8 +113,7 @@
         "never"
       ],
       "arrow-body-style": [
-        2,
-        "always"
+        0
       ],
       "comma-dangle": [
         2,
