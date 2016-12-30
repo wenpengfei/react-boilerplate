@@ -106,7 +106,7 @@
     "rules": {
       "arrow-parens": [
         "error",
-        "always"
+        "as-needed"
       ],
       "semi": [
         "error",
