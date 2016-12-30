@@ -1,11 +1,15 @@
-import { createReducer } from 'redux-act';
-import { changeUsername } from './actions';
-import { combineReducers } from 'redux-immutable';
+import { createReducer } from 'redux-act'
+import { fromJS } from 'immutable'
+import { changeUsername } from './actions'
 
-export const username = createReducer({
-  [changeUsername]: (state, payload) => payload,
-}, 'wenpengfei');
+const initialState = fromJS({
+  username: 'wenpengfei',
+  username2: 'wenpengfei',
+})
 
-export default combineReducers({
-  username,
-});
+export default createReducer({
+  [changeUsername]: (state, payload) => {
+    return state.set('username', payload.replace(/@/gi, ''))
+                .set('username2', '-')
+  },
+}, initialState)
