@@ -18,7 +18,7 @@
   </a>
   <!-- Build Status -->
   <a href="https://travis-ci.org/mxstbr/react-boilerplate">
-    <img src="https://travis-ci.org/mxstbr/react-boilerplate.svg" alt="Build Status" />
+    <img src="https://travis-ci.org/wenpengfei/react-boilerplate.svg?branch=develop" alt="Build Status" />
   </a>
   <!-- Test Coverage -->
   <a href="https://coveralls.io/r/mxstbr/react-boilerplate">
