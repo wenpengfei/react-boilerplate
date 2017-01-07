@@ -68,6 +68,6 @@ Now you're ready to rumble!
 - [x] redux-logger
 - [x] redux-act
 - [x] recompose
-- [ ] redux-form
+- [x] redux-form
 
 
