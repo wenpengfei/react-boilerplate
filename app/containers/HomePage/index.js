@@ -54,6 +54,7 @@ export default compose(
   }),
   withHandlers({
     onChangeUsernameCreator: props => event => {
+      console.log(props)
       props.actions.changeUsername(event.target.value)
     },
   }),
