@@ -34,12 +34,12 @@ saga to that. If your container does not yet have a `sagas.js` file, add one wit
 this boilerplate structure:
 
 ```JS
-import { take, call, put, select } from 'redux-saga/effects';
+import { take, call, put, select } from 'redux-saga/effects'
 
 // Your sagas for this container
 export default [
   sagaName,
-];
+]
 
 // Individual exports for testing
 export function* sagaName() {
@@ -55,18 +55,18 @@ getComponent(nextState, cb) {
     System.import('containers/YourComponent/reducer'),
     System.import('containers/YourComponent/sagas'),
     System.import('containers/YourComponent'),
-  ]);
+  ])
 
-  const renderRoute = loadModule(cb);
+  const renderRoute = loadModule(cb)
 
   importModules.then(([reducer, sagas, component]) => {
-    injectReducer('home', reducer.default);
-    injectSagas(sagas.default); // Inject the saga
+    injectReducer('home', reducer.default)
+    injectSagas(sagas.default) // Inject the saga
 
-    renderRoute(component);
-  });
+    renderRoute(component)
+  })
 
-  importModules.catch(errorLoading);
+  importModules.catch(errorLoading)
 },
 ```
 

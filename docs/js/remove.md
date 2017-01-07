@@ -40,22 +40,22 @@ You'll also need to hook up the history directly to the store. Make changes to `
 ```js
 
 const selectLocationState = () => {
-  let prevRoutingState;
-  let prevRoutingStateJS;
+  let prevRoutingState
+  let prevRoutingStateJS
 
   return (state) => {
-    const routingState = state.get('route'); // or state.route
+    const routingState = state.get('route') // or state.route
 
     if (!routingState.equals(prevRoutingState)) {
-      prevRoutingState = routingState;
-      prevRoutingStateJS = routingState.toJS();
+      prevRoutingState = routingState
+      prevRoutingStateJS = routingState.toJS()
     }
 
-    return prevRoutingStateJS;
-  };
-};
+    return prevRoutingStateJS
+  }
+}
 
 const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState: selectLocationState(),
-});
+})
 ```

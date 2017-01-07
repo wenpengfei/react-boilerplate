@@ -52,7 +52,7 @@ const rootRoute = {
 }
 
 
-const render = (translatedMessages) => {
+const render = translatedMessages => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={translatedMessages}>
@@ -83,14 +83,14 @@ if (module.hot) {
 
 // Chunked polyfill for browsers without Intl support
 if (!window.Intl) {
-  (new Promise((resolve) => {
+  (new Promise(resolve => {
     resolve(System.import('intl'))
   }))
     .then(() => Promise.all([
       System.import('intl/locale-data/jsonp/de.js'),
     ]))
     .then(() => render(translationMessages))
-    .catch((err) => {
+    .catch(err => {
       throw err
     })
 } else {

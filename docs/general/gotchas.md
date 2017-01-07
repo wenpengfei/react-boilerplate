@@ -17,7 +17,7 @@ transfer the image to the build folder. To get webpack to transfer them, you
 have to import them with the file loader in your JavaScript somewhere, e.g.:
 
 ```JavaScript
-import 'file?name=[name].[ext]!../img/yourimg.png';
+import 'file?name=[name].[ext]!../img/yourimg.png'
 ```
 
 Then webpack will correctly transfer the image to the build folder.

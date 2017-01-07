@@ -19,7 +19,7 @@ export default function configureStore(initialState = {}, history) {
     routerMiddleware(history),
   ]
 
-  const stateTransformer = (state) => {
+  const stateTransformer = state => {
     if (Iterable.isIterable(state)) {
       return state.toJS()
     }

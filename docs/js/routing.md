@@ -21,15 +21,15 @@ This is what a standard (generated) route looks like for a container:
   getComponent(nextState, cb) {
     const importModules = Promise.all([
       System.import('containers/HomePage')
-    ]);
+    ])
 
-    const renderRoute = loadModule(cb);
+    const renderRoute = loadModule(cb)
 
     importModules.then(([component]) => {
-      renderRoute(component);
-    });
+      renderRoute(component)
+    })
 
-    importModules.catch(errorLoading);
+    importModules.catch(errorLoading)
   },
 }
 ```
@@ -37,9 +37,9 @@ This is what a standard (generated) route looks like for a container:
 To go to a new page use the `push` function by `react-router-redux`:
 
 ```JS
-import { push } from 'react-router-redux';
+import { push } from 'react-router-redux'
 
-dispatch(push('/some/page'));
+dispatch(push('/some/page'))
 ```
 
 ## Child Routes
@@ -55,15 +55,15 @@ For example, if you have a route called `about` at `/about` and want to make a c
   getComponent(nextState, cb) {
     const importModules = Promise.all([
       System.import('containers/AboutPage'),
-    ]);
+    ])
 
-    const renderRoute = loadModule(cb);
+    const renderRoute = loadModule(cb)
 
     importModules.then(([component]) => {
-      renderRoute(component);
-    });
+      renderRoute(component)
+    })
 
-    importModules.catch(errorLoading);
+    importModules.catch(errorLoading)
   },
   childRoutes: [
     {
@@ -72,15 +72,15 @@ For example, if you have a route called `about` at `/about` and want to make a c
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/TeamPage'),
-        ]);
+        ])
 
-        const renderRoute = loadModule(cb);
+        const renderRoute = loadModule(cb)
 
         importModules.then(([component]) => {
-          renderRoute(component);
-        });
+          renderRoute(component)
+        })
 
-        importModules.catch(errorLoading);
+        importModules.catch(errorLoading)
       },
     },
   ]
@@ -98,29 +98,29 @@ To add an index route, use the following pattern:
   getComponent(nextState, cb) {
     const importModules = Promise.all([
       System.import('containers/HomePage')
-    ]);
+    ])
 
-    const renderRoute = loadModule(cb);
+    const renderRoute = loadModule(cb)
 
     importModules.then(([component]) => {
-      renderRoute(component);
-    });
+      renderRoute(component)
+    })
 
-    importModules.catch(errorLoading);
+    importModules.catch(errorLoading)
   },
   indexRoute: {
     getComponent(partialNextState, cb) {
       const importModules = Promise.all([
         System.import('containers/HomeView')
-      ]);
+      ])
 
-      const renderRoute = loadModule(cb);
+      const renderRoute = loadModule(cb)
 
       importModules.then(([component]) => {
-        renderRoute(component);
-      });
+        renderRoute(component)
+      })
 
-      importModules.catch(errorLoading);
+      importModules.catch(errorLoading)
     },
   },
 }
@@ -138,17 +138,17 @@ getComponent(nextState, cb) {
    System.import('containers/Post/reducer'),
    System.import('containers/Post/sagas'),
    System.import('containers/Post'),
- ]);
+ ])
 
- const renderRoute = loadModule(cb);
+ const renderRoute = loadModule(cb)
 
  importModules.then(([reducer, sagas, component]) => {
-   injectReducer('post', reducer.default);
-   injectSagas(sagas.default);
-   renderRoute(component);
- });
+   injectReducer('post', reducer.default)
+   injectSagas(sagas.default)
+   renderRoute(component)
+ })
 
- importModules.catch(errorLoading);
+ importModules.catch(errorLoading)
 },
 ```
 
@@ -167,30 +167,30 @@ export function getPost(slug) {
   return {
     type: LOAD_POST,
     slug,
-  };
+  }
 }
 
 export function postLoaded(post) {
   return {
     type: LOAD_POST_SUCCESS,
     podcast,
-  };
+  }
 }
 ```
 
 ###Saga:
 
 ```JS
-const { slug } = yield take(LOAD_POST);
-yield call(getXhrPodcast, slug);
+const { slug } = yield take(LOAD_POST)
+yield call(getXhrPodcast, slug)
 
 export function* getXhrPodcast(slug) {
-  const requestURL = `http://your.api.com/api/posts/${slug}`;
-  const post = yield call(request, requestURL);
+  const requestURL = `http://your.api.com/api/posts/${slug}`
+  const post = yield call(request, requestURL)
   if (!post.err) {
-    yield put(postLoaded(post));
+    yield put(postLoaded(post))
   } else {
-    yield put(postLoadingError(post.err));
+    yield put(postLoadingError(post.err))
   }
 }
 ```

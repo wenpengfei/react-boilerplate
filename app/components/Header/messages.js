@@ -3,7 +3,7 @@
  *
  * This contains all the text for the HomePage component.
  */
-import { defineMessages } from 'react-intl';
+import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   home: {
@@ -14,4 +14,4 @@ export default defineMessages({
     id: 'boilerplate.components.Header.features',
     defaultMessage: 'Features',
   },
-});
+})

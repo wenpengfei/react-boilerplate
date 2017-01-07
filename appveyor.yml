@@ -26,7 +26,7 @@ install:
   # Install the latest stable version of Node
   - ps: Install-Product node $env:nodejs_version
   - npm -g install npm
-  - set PATH=%APPDATA%\npm;%PATH%
+  - set PATH=%APPDATA%\npm%PATH%
   - npm install
 
 # Disable automatic builds

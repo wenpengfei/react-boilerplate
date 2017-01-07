@@ -1,8 +1,8 @@
-const webpackConfig = require('../webpack/webpack.test.babel');
-const argv = require('minimist')(process.argv.slice(2));
-const path = require('path');
+const webpackConfig = require('../webpack/webpack.test.babel')
+const argv = require('minimist')(process.argv.slice(2))
+const path = require('path')
 
-module.exports = (config) => {
+module.exports = config => {
   config.set({
     frameworks: ['mocha'],
     reporters: ['coverage', 'mocha'],
@@ -57,5 +57,5 @@ module.exports = (config) => {
       ],
     },
 
-  });
-};
+  })
+}
