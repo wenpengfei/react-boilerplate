@@ -10,7 +10,7 @@ import { createStructuredSelector } from 'reselect'
 
 import Input from './Input'
 import { selectUsername } from './selectors'
-import { selectRepos, selectLoading, selectError } from 'containers/App/selectors'
+import { selectLoading } from 'containers/App/selectors'
 
 import { bindActionCreators } from 'redux'
 import { compose, withContext, getContext, withHandlers } from 'recompose'
@@ -36,10 +36,8 @@ HomePage.propTypes = {
 }
 
 const mapStateToProps = createStructuredSelector({
-  repos: selectRepos(),
   username: selectUsername(),
   loading: selectLoading(),
-  error: selectError(),
 })
 
 export default compose(

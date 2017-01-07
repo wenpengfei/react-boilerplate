@@ -1,16 +1,3 @@
-/*
- *
- * LanguageProvider actions
- *
- */
+import { createAction } from 'redux-act'
+export const changeLocale = createAction('change locale')
 
-import {
-  CHANGE_LOCALE,
-} from './constants'
-
-export function changeLocale(languageLocale) {
-  return {
-    type: CHANGE_LOCALE,
-    locale: languageLocale,
-  }
-}

@@ -3,27 +3,17 @@
  * LanguageProvider reducer
  *
  */
-
-import { fromJS } from 'immutable';
-import {
-  CHANGE_LOCALE,
-} from './constants';
-import {
-  DEFAULT_LOCALE,
-} from '../App/constants';
+import { createReducer } from 'redux-act'
+import { fromJS } from 'immutable'
+import { changeLocale } from './actions'
 
 const initialState = fromJS({
-  locale: DEFAULT_LOCALE,
-});
+  locale: 'en',
+})
 
-function languageProviderReducer(state = initialState, action) {
-  switch (action.type) {
-    case CHANGE_LOCALE:
-      return state
-        .set('locale', action.locale);
-    default:
-      return state;
-  }
-}
+export default createReducer({
+  [changeLocale]: (state, payload) => {
+    return state.set('locale', payload)
+  },
+}, initialState)
 
-export default languageProviderReducer;
