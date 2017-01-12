@@ -8,16 +8,8 @@
 <br />
 
 <div align="center">
-  <!-- Dependency Status -->
-  <a href="https://david-dm.org/mxstbr/react-boilerplate">
-    <img src="https://david-dm.org/mxstbr/react-boilerplate.svg" alt="Dependency Status" />
-  </a>
-  <!-- devDependency Status -->
-  <a href="https://david-dm.org/mxstbr/react-boilerplate#info=devDependencies">
-    <img src="https://david-dm.org/mxstbr/react-boilerplate/dev-status.svg" alt="devDependency Status" />
-  </a>
   <!-- Build Status -->
-  <a href="https://travis-ci.org/mxstbr/react-boilerplate">
+  <a href="https://travis-ci.org/wenpengfei/react-boilerplate">
     <img src="https://travis-ci.org/wenpengfei/react-boilerplate.svg?branch=develop" alt="Build Status" />
   </a>
   <!-- Test Coverage -->
