@@ -6739,7 +6739,7 @@ redux-act@^1.1.0:
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/redux-act/download/redux-act-1.1.0.tgz#941f6999f73b02d876f26aa0d76b0b61ce3e58bc"
 
-redux-form@^6.4.3:
+redux-form@^6.2.0:
   version "6.4.3"
   resolved "http://registry.npm.taobao.org/redux-form/download/redux-form-6.4.3.tgz#bd83a77770d9805f7b595a4ff18f00fe4267d3c8"
   dependencies:

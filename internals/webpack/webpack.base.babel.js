@@ -71,8 +71,10 @@ module.exports = options => ({
     ],
     mainFields: [
       'browser',
-      'jsnext:main',
+      // Necessary hack because of a bug in redux-form
+      // https://github.com/erikras/redux-form/issues/1637
       'main',
+      'jsnext:main',
     ],
   },
   devtool: options.devtool,

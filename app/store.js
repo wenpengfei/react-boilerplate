@@ -60,18 +60,18 @@ export default function configureStore(initialState = {}, history) {
   store.runSaga = sagaMiddleware.run
   store.asyncReducers = {} // Async reducer registry
 
-  // Make reducers hot reloadable, see http://mxs.is/googmo
-  /* istanbul ignore next */
-  if (module.hot) {
-    module.hot.accept('./reducers', () => {
-      System.import('./reducers').then((reducerModule) => {
-        const createReducers = reducerModule.default
-        const nextReducers = createReducers(store.asyncReducers)
+  // // Make reducers hot reloadable, see http://mxs.is/googmo
+  // /* istanbul ignore next */
+  // if (module.hot) {
+  //   module.hot.accept('./reducers', () => {
+  //     System.import('./reducers').then((reducerModule) => {
+  //       const createReducers = reducerModule.default
+  //       const nextReducers = createReducers(store.asyncReducers)
 
-        store.replaceReducer(nextReducers)
-      })
-    })
-  }
+  //       store.replaceReducer(nextReducers)
+  //     })
+  //   })
+  // }
 
   return store
 }

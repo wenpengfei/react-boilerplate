@@ -8,32 +8,25 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import Input from './Input'
 import { selectUsername } from './selectors'
 import { selectLoading } from 'containers/App/selectors'
 
 import { bindActionCreators } from 'redux'
 import { compose, withContext, getContext, withHandlers } from 'recompose'
 import * as actions from './actions'
+import ImmutableForm from '../../Forms/ImmutableForm'
 
-const HomePage = ({ username, onChangeUsernameCreator }) => {
+const HomePage = () => {
   return (
     <div>
-      <Input
-        id="username"
-        type="text"
-        placeholder="mxstbr"
-        value={username}
-        onChange={onChangeUsernameCreator}
-      />
+      <ImmutableForm />
     </div>
   )
 }
 
-HomePage.propTypes = {
-  onChangeUsernameCreator: React.PropTypes.func,
-  username: React.PropTypes.string,
-}
+// HomePage.propTypes = {
+//   onChangeUsernameCreator: React.PropTypes.string,
+// }
 
 const mapStateToProps = createStructuredSelector({
   username: selectUsername(),
