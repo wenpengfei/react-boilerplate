@@ -4,29 +4,26 @@
 *
 */
 
-import React from 'react'
+import React from 'react';
+// import styled from 'styled-components';
 
 {{#if wantMessages}}
-import { FormattedMessage } from 'react-intl'
-import messages from './messages'
-{{/if}}
-
-{{#if wantCSS}}
-import styles from './styles.css'
+import { FormattedMessage } from 'react-intl';
+import messages from './messages';
 {{/if}}
 
 function {{ properCase name }}() {
   return (
-    {{#if wantCSS}}
-    <div className={{curly true}}styles.{{ camelCase name }}{{curly}}>
-    {{else}}
     <div>
-    {{/if}}
     {{#if wantMessages}}
       <FormattedMessage {...messages.header} />
     {{/if}}
     </div>
-  )
+  );
 }
 
-export default {{ properCase name }}
+{{ properCase name }}.propTypes = {
+
+};
+
+export default {{ properCase name }};

@@ -2,10 +2,10 @@
  * COMMON WEBPACK CONFIGURATION
  */
 
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
 
-module.exports = options => ({
+module.exports = (options) => ({
   entry: options.entry,
   output: Object.assign({ // Compile into js/build.js
     path: path.resolve(process.cwd(), 'build'),
@@ -14,7 +14,7 @@ module.exports = options => ({
   module: {
     loaders: [{
       test: /\.js$/, // Transform all .js files required somewhere with Babel
-      loader: 'babel',
+      loader: 'babel-loader',
       exclude: /node_modules/,
       query: options.babelQuery,
     }, {
@@ -33,7 +33,18 @@ module.exports = options => ({
       test: /\.(jpg|png|gif)$/,
       loaders: [
         'file-loader',
-        'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
+        {
+          loader: 'image-webpack-loader',
+          query: {
+            progressive: true,
+            optimizationLevel: 7,
+            interlaced: false,
+            pngquant: {
+              quality: '65-90',
+              speed: 4,
+            },
+          },
+        },
       ],
     }, {
       test: /\.html$/,
@@ -43,17 +54,20 @@ module.exports = options => ({
       loader: 'json-loader',
     }, {
       test: /\.(mp4|webm)$/,
-      loader: 'url-loader?limit=10000',
+      loader: 'url-loader',
+      query: {
+        limit: 10000,
+      },
     }],
   },
   plugins: options.plugins.concat([
     new webpack.ProvidePlugin({
       // make fetch available
-      fetch: 'exports?self.fetch!whatwg-fetch',
+      fetch: 'exports-loader?self.fetch!whatwg-fetch',
     }),
 
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
-    // inside your code for any environment checks UglifyJS will automatically
+    // inside your code for any environment checks; UglifyJS will automatically
     // drop any unreachable code.
     new webpack.DefinePlugin({
       'process.env': {
@@ -71,12 +85,11 @@ module.exports = options => ({
     ],
     mainFields: [
       'browser',
-      // Necessary hack because of a bug in redux-form
-      // https://github.com/erikras/redux-form/issues/1637
-      'main',
       'jsnext:main',
+      'main',
     ],
   },
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window
-})
+  performance: options.performance || {},
+});

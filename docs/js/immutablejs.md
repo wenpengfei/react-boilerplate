@@ -15,13 +15,13 @@ converting it to a immutable data structure. (Note: the conversion is performed 
 that even arbitrarily nested arrays/objects are immutable structures too!)
 
 ```JS
-import { fromJS } from 'immutable'
+import { fromJS } from 'immutable';
 
 const initialState = fromJS({
   myData: {
   	message: 'Hello World!'
   },
-})
+});
 ```
 
 
@@ -30,18 +30,18 @@ When a reducer is subscribed to an action and needs to return the new state they
 If the changing state data is nested, we can utilize the 'deep' versions of these setters: [`.setIn`](https://facebook.github.io/immutable-js/docs/#/Map/setIn) and [`.updateIn`](https://facebook.github.io/immutable-js/docs/#/Map/updateIn), [`.mergeIn`](https://facebook.github.io/immutable-js/docs/#/Map/mergeIn).
 
 ```JS
-import { SOME_ACTION, SOME_OTHER_ACTION } from './actions'
+import { SOME_ACTION, SOME_OTHER_ACTION } from './actions';
 
 // […]
 
 function myReducer(state = initialState, action) {
   switch (action.type) {
     case SOME_ACTION:
-      return state.set('myData', action.payload)
+      return state.set('myData', action.payload);
     case SOME_OTHER_ACTION:
-      return state.setIn(['myData', 'message'], action.payload)
+      return state.setIn(['myData', 'message'], action.payload);
     default:
-      return state
+      return state;
   }
 }
 ```
@@ -51,10 +51,10 @@ state. Since that state is now immutable, we need to use the [`.get`](https://fa
 functions to select the part we want.
 
 ```JS
-const myDataSelector = (state) => state.get('myData')
-const messageSelector = (state) => state.getIn(['myData', 'message'])
+const myDataSelector = (state) => state.get('myData');
+const messageSelector = (state) => state.getIn(['myData', 'message']);
 
-export default myDataSelector
+export default myDataSelector;
 ```
 
 To learn more, check out [`reselect.md`](reselect.md)!
@@ -79,9 +79,9 @@ const StateRecord = Record({
   myData: {
       message: 'Hello World!'
   }
-})
+});
 
-const initialState = new StateRecord({}) // initialState is now a new StateRecord instance
+const initialState = new StateRecord({}); // initialState is now a new StateRecord instance
                                           // initialized with myData.message set by default as 'Hello World!'
 ```
 
@@ -97,7 +97,7 @@ Certain properties can not be set on a record as they would conflict with the AP
 const ProductRecord = Record({
     type: 'tshirt',
     size: 'small'
-})
+});
 ```
 
 Because record.size is used to return the records count (similar to array.length), the above definition would throw an error.

@@ -4,5 +4,12 @@
  *
  */
 
-import { createAction } from 'redux-act'
-export const example = createAction('description')
+import {
+  DEFAULT_ACTION,
+} from './constants';
+
+export function defaultAction() {
+  return {
+    type: DEFAULT_ACTION,
+  };
+}

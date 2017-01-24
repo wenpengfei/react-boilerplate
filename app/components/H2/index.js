@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const H2 = styled.h2`
-  font-size: 1.5em
-`
+  font-size: 1.5em;
+`;
 
-export default H2
+export default H2;

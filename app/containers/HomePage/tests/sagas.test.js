@@ -1,84 +1,68 @@
-// /**
-//  * Tests for HomePage sagas
-//  */
+/**
+ * Tests for HomePage sagas
+ */
 
-// import expect from 'expect'
-// import { takeLatest } from 'redux-saga'
-// import { take, call, put, select, fork, cancel } from 'redux-saga/effects'
-// import { LOCATION_CHANGE } from 'react-router-redux'
+import { cancel, take, put, takeLatest } from 'redux-saga/effects';
+import { createMockTask } from 'redux-saga/lib/utils';
 
-// import { getRepos, getReposWatcher, githubData } from '../sagas'
+import { LOCATION_CHANGE } from 'react-router-redux';
 
-// // import { LOAD_REPOS } from 'containers/App/constants'
-// import { reposLoaded, repoLoadingError } from 'containers/App/actions'
+import { LOAD_REPOS } from 'containers/App/constants';
+import { reposLoaded, repoLoadingError } from 'containers/App/actions';
 
-// import request from 'utils/request'
-// import { selectUsername } from 'containers/HomePage/selectors'
+import { getRepos, githubData } from '../sagas';
 
-// const username = 'mxstbr'
+const username = 'mxstbr';
 
-// describe('getRepos Saga', () => {
-//   let getReposGenerator
+/* eslint-disable redux-saga/yield-effects */
+describe('getRepos Saga', () => {
+  let getReposGenerator;
 
-//   // We have to test twice, once for a successful load and once for an unsuccessful one
-//   // so we do all the stuff that happens beforehand automatically in the beforeEach
-//   beforeEach(() => {
-//     getReposGenerator = getRepos()
+  // We have to test twice, once for a successful load and once for an unsuccessful one
+  // so we do all the stuff that happens beforehand automatically in the beforeEach
+  beforeEach(() => {
+    getReposGenerator = getRepos();
 
-//     const selectDescriptor = getReposGenerator.next().value
-//     expect(selectDescriptor).toEqual(select(selectUsername()))
+    const selectDescriptor = getReposGenerator.next().value;
+    expect(selectDescriptor).toMatchSnapshot();
 
-//     const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`
-//     const callDescriptor = getReposGenerator.next(username).value
-//     expect(callDescriptor).toEqual(call(request, requestURL))
-//   })
+    const callDescriptor = getReposGenerator.next(username).value;
+    expect(callDescriptor).toMatchSnapshot();
+  });
 
-//   it('should dispatch the reposLoaded action if it requests the data successfully', () => {
-//     const response = [{
-//       name: 'First repo',
-//     }, {
-//       name: 'Second repo',
-//     }]
-//     const putDescriptor = getReposGenerator.next(response).value
-//     expect(putDescriptor).toEqual(put(reposLoaded(response, username)))
-//   })
+  it('should dispatch the reposLoaded action if it requests the data successfully', () => {
+    const response = [{
+      name: 'First repo',
+    }, {
+      name: 'Second repo',
+    }];
+    const putDescriptor = getReposGenerator.next(response).value;
+    expect(putDescriptor).toEqual(put(reposLoaded(response, username)));
+  });
 
-//   it('should call the repoLoadingError action if the response errors', () => {
-//     const response = new Error('Some error')
-//     const putDescriptor = getReposGenerator.throw(response).value
-//     expect(putDescriptor).toEqual(put(repoLoadingError(response)))
-//   })
-// })
+  it('should call the repoLoadingError action if the response errors', () => {
+    const response = new Error('Some error');
+    const putDescriptor = getReposGenerator.throw(response).value;
+    expect(putDescriptor).toEqual(put(repoLoadingError(response)));
+  });
+});
 
-// describe('getReposWatcher Saga', () => {
-//   const getReposWatcherGenerator = getReposWatcher()
+describe('githubDataSaga Saga', () => {
+  const githubDataSaga = githubData();
+  const mockedTask = createMockTask();
 
-//   it('should watch for LOAD_REPOS action', () => {
-//     const takeDescriptor = getReposWatcherGenerator.next().value
-//     expect(takeDescriptor).toEqual(fork(takeLatest, LOAD_REPOS, getRepos))
-//   })
-// })
+  it('should start task to watch for LOAD_REPOS action', () => {
+    const takeLatestDescriptor = githubDataSaga.next().value;
+    expect(takeLatestDescriptor).toEqual(takeLatest(LOAD_REPOS, getRepos));
+  });
 
-// describe('githubDataSaga Saga', () => {
-//   const githubDataSaga = githubData()
+  it('should yield until LOCATION_CHANGE action', () => {
+    const takeDescriptor = githubDataSaga.next(mockedTask).value;
+    expect(takeDescriptor).toEqual(take(LOCATION_CHANGE));
+  });
 
-//   let forkDescriptor
-
-//   it('should asyncronously fork getReposWatcher saga', () => {
-//     forkDescriptor = githubDataSaga.next()
-//     expect(forkDescriptor.value).toEqual(fork(getReposWatcher))
-//   })
-
-//   it('should yield until LOCATION_CHANGE action', () => {
-//     const takeDescriptor = githubDataSaga.next()
-//     expect(takeDescriptor.value).toEqual(take(LOCATION_CHANGE))
-//   })
-
-//   it('should finally cancel() the forked getReposWatcher saga',
-//      function* githubDataSagaCancellable() {
-//       // reuse open fork for more integrated approach
-//        forkDescriptor = githubDataSaga.next(put(LOCATION_CHANGE))
-//        expect(forkDescriptor.value).toEqual(cancel(forkDescriptor))
-//      }
-//    )
-// })
+  it('should cancel the forked task when LOCATION_CHANGE happens', () => {
+    const cancelDescriptor = githubDataSaga.next().value;
+    expect(cancelDescriptor).toEqual(cancel(mockedTask));
+  });
+});

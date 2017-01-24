@@ -3,23 +3,23 @@
       name: '{{ camelCase component }}',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/{{ properCase component }}/reducer'),
+          import('containers/{{ properCase component }}/reducer'),
           {{#if useSagas}}
-          System.import('containers/{{ properCase component }}/sagas'),
+          import('containers/{{ properCase component }}/sagas'),
           {{/if}}
-          System.import('containers/{{ properCase component }}'),
-        ])
+          import('containers/{{ properCase component }}'),
+        ]);
 
-        const renderRoute = loadModule(cb)
+        const renderRoute = loadModule(cb);
 
         importModules.then(([reducer,{{#if useSagas}} sagas,{{/if}} component]) => {
-          injectReducer('{{ camelCase component }}', reducer.default)
+          injectReducer('{{ camelCase component }}', reducer.default);
           {{#if useSagas}}
-          injectSagas(sagas.default)
+          injectSagas(sagas.default);
           {{/if}}
-          renderRoute(component)
-        })
+          renderRoute(component);
+        });
 
-        importModules.catch(errorLoading)
+        importModules.catch(errorLoading);
       },
     },$1

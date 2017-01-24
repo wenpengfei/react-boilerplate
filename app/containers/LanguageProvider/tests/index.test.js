@@ -1,35 +1,49 @@
-// import LanguageProvider from '../index'
+import React from 'react';
+import { shallow, mount } from 'enzyme';
+import { FormattedMessage, defineMessages } from 'react-intl';
+import { Provider } from 'react-redux';
+import { browserHistory } from 'react-router';
 
-// import expect from 'expect'
-// import { shallow } from 'enzyme'
-// import { FormattedMessage, defineMessages } from 'react-intl'
-// import configureStore from '../../../store'
-// import React from 'react'
-// import { Provider } from 'react-redux'
-// import { browserHistory } from 'react-router'
-// import { translationMessages } from '../../../i18n'
+import ConnectedLanguageProvider, { LanguageProvider } from '../index';
+import configureStore from '../../../store';
 
-// describe('<LanguageProvider />', () => {
-//   let store
+import { translationMessages } from '../../../i18n';
 
-//   before(() => {
-//     store = configureStore({}, browserHistory)
-//   })
+const messages = defineMessages({
+  someMessage: {
+    id: 'some.id',
+    defaultMessage: 'This is some default message',
+    en: 'This is some en message',
+  },
+});
 
-//   it('should render the default language messages', () => {
-//     const messages = defineMessages({
-//       someMessage: {
-//         id: 'some.id',
-//         defaultMessage: 'This is some default message',
-//       },
-//     })
-//     const renderedComponent = shallow(
-//       <Provider store={store}>
-//         <LanguageProvider messages={translationMessages}>
-//           <FormattedMessage {...messages.someMessage} />
-//         </LanguageProvider>
-//       </Provider>
-//     )
-//     expect(renderedComponent.contains(<FormattedMessage {...messages.someMessage} />)).toEqual(true)
-//   })
-// })
+describe('<LanguageProvider />', () => {
+  it('should render its children', () => {
+    const children = (<h1>Test</h1>);
+    const renderedComponent = shallow(
+      <LanguageProvider messages={messages} locale="en">
+        {children}
+      </LanguageProvider>
+    );
+    expect(renderedComponent.contains(children)).toBe(true);
+  });
+});
+
+describe('<ConnectedLanguageProvider />', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, browserHistory);
+  });
+
+  it('should render the default language messages', () => {
+    const renderedComponent = mount(
+      <Provider store={store}>
+        <ConnectedLanguageProvider messages={translationMessages}>
+          <FormattedMessage {...messages.someMessage} />
+        </ConnectedLanguageProvider>
+      </Provider>
+    );
+    expect(renderedComponent.contains(<FormattedMessage {...messages.someMessage} />)).toBe(true);
+  });
+});
