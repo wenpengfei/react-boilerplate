@@ -37,5 +37,6 @@ Now you're ready to rumble!
 - [x] redux-logger
 - [x] redux-act
 - [x] redux-form
+- [ ] coverage
 
 
