@@ -33,10 +33,10 @@ Now you're ready to rumble!
 
 ## Todos
 
-- [x] recompose
-- [x] redux-logger
-- [x] redux-act
-- [x] redux-form
-- [ ] coverage
+- [] recompose
+- [] redux-logger
+- [] redux-act
+- [] redux-form
+- [] coverage
 
 
