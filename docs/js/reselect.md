@@ -18,11 +18,11 @@ Simple selectors are just that: they take the application state and select a
 part of it.
 
 ```javascript
-const mySelector = (state) => state.get('someState');
+const mySelector = (state) => state.get('someState')
 
 export {
   mySelector,
-};
+}
 ```
 
 ### Complex selectors
@@ -32,17 +32,17 @@ get nested state parts with reselect's `createSelector` function. We import othe
 selectors and pass them to the `createSelector` call:
 
 ```javascript
-import { createSelector } from 'reselect';
-import mySelector from 'mySelector';
+import { createSelector } from 'reselect'
+import mySelector from 'mySelector'
 
 const myComplexSelector = createSelector(
   mySelector,
   (myState) => myState.get('someNestedState')
-);
+)
 
 export {
   myComplexSelector,
-};
+}
 ```
 
 These selectors can then either be used directly in our containers as
@@ -52,7 +52,7 @@ These selectors can then either be used directly in our containers as
 export default connect(createSelector(
   myComplexSelector,
   (myNestedState) => ({ data: myNestedState })
-))(SomeComponent);
+))(SomeComponent)
 ```
 
 ### Adding a new selector
@@ -62,15 +62,15 @@ you want to select, add your selector to said file. If you don't have one yet,
 add a new one into your container folder and fill it with this boilerplate code:
 
 ```JS
-import { createSelector } from 'reselect';
+import { createSelector } from 'reselect'
 
 const selectMyState = () => createSelector(
 
-);
+)
 
 export {
   selectMyState,
-};
+}
 ```
 
 ---

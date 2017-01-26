@@ -34,7 +34,7 @@ situated in the `add.js` file:
 // add.js
 
 export function add(x, y) {
-  return x + y;
+  return x + y
 }
 ```
 
@@ -59,7 +59,7 @@ First, we `import` the function in our `add.test.js` file:
 ```javascript
 // add.test.js
 
-import { add } from './add.js';
+import { add } from './add.js'
 ```
 
 Second, we `describe` our function:
@@ -67,7 +67,7 @@ Second, we `describe` our function:
 ```javascript
 describe('add()', () => {
 
-});
+})
 ```
 
 > Note: `(arg1, arg2) => { }` is ES6 notation for anonymous functions, i.e. is
@@ -79,12 +79,12 @@ Third, we tell Jest what `it` (our function) should do:
 describe('add()', () => {
   it('adds two numbers', () => {
 
-  });
+  })
 
   it("doesn't add the third number", () => {
 
-  });
-});
+  })
+})
 ```
 
 Now, We're going to test that our little function correctly adds two numbers.
@@ -94,8 +94,8 @@ corresponding output:
 ```javascript
 // [...]
 it('adds two numbers', () => {
-  expect(add(2, 3)).toEqual(5);
-});
+  expect(add(2, 3)).toEqual(5)
+})
 // [...]
 ```
 
@@ -105,8 +105,8 @@ third number if one is present:
 ```javascript
 // [...]
 it("doesn't add the third number", () => {
- expect(add(2, 3, 5)).toEqual(add(2, 3));
-});
+ expect(add(2, 3, 5)).toEqual(add(2, 3))
+})
 // [...]
 ```
 
@@ -129,7 +129,7 @@ Lets say an unnamed colleague of ours breaks our function:
 // add.js
 
 export function add(x, y) {
-  return x * y;
+  return x * y
 }
 ```
 
@@ -182,10 +182,10 @@ This is what our `NavBar` actions look like:
 ```javascript
 // actions.js
 
-import { TOGGLE_NAV } from './constants.js';
+import { TOGGLE_NAV } from './constants.js'
 
 export function toggleNav() {
-  return { type: TOGGLE_NAV };
+  return { type: TOGGLE_NAV }
 }
 ```
 
@@ -194,24 +194,24 @@ with this reducer:
 ```javascript
 // reducer.js
 
-import { TOGGLE_NAV } from './constants.js';
+import { TOGGLE_NAV } from './constants.js'
 
 const initialState = {
   open: false
-};
+}
 
 function NavBarReducer(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_NAV:
       return Object.assign({}, state, {
         open: !state.open
-      });
+      })
     default:
-      return state;
+      return state
   }
 }
 
-export default NavBarReducer;
+export default NavBarReducer
 ```
 
 Lets test the reducer first!
@@ -223,8 +223,8 @@ First, we have to import the reducer and the constant.
 ```javascript
 // reducer.test.js
 
-import NavBarReducer from '../reducer';
-import { TOGGLE_NAV } from '../constants';
+import NavBarReducer from '../reducer'
+import { TOGGLE_NAV } from '../constants'
 ```
 
 Then we `describe` the reducer, and add two tests: we check that it returns the
@@ -234,12 +234,12 @@ initial state and that it handles the `toggleNav` action.
 describe('NavBarReducer', () => {
   it('returns the initial state', () => {
 
-  });
+  })
 
   it('handles the toggleNav action', () => {
 
-  });
-});
+  })
+})
 ```
 
 Lets write the tests themselves! Since the reducer is just a function, we can
@@ -262,13 +262,13 @@ describe('NavBarReducer', () => {
   it('returns the initial state', () => {
     expect(NavBarReducer(undefined, {})).toEqual({
       open: false
-    });
-  });
+    })
+  })
 
   it('handles the toggleNav action', () => {
 
-  });
-});
+  })
+})
 ```
 
 This works, but we have one problem: We also have to explicitly write the initial state itself. When
@@ -285,13 +285,13 @@ We can write the test like
 ```javascript
 describe('NavBarReducer', () => {
   it('returns the initial state', () => {
-    expect(NavBarReducer(undefined, {})).toMatchSnapshot();
-  });
+    expect(NavBarReducer(undefined, {})).toMatchSnapshot()
+  })
 
   it('handles the toggleNav action', () => {
 
-  });
-});
+  })
+})
 ```
 
 Jest is now the one responsible for tracking the definition of the initial state. When somebody changes it in the future, Jest will warn that the snapshot doesn't match and then allow them to update the snapshot with a single command. No more manual updates!
@@ -313,8 +313,8 @@ return and `expect`:
 ```javascript
 // actions.test.js
 
-import { toggleNav } from '../actions';
-import { TOGGLE_NAV } from '../constants';
+import { toggleNav } from '../actions'
+import { TOGGLE_NAV } from '../constants'
 
 ```
 
@@ -325,9 +325,9 @@ describe('NavBar actions', () => {
   describe('toggleNav', () => {
     it('should return the correct constant', () => {
 
-    });
-  });
-});
+    })
+  })
+})
 ```
 
 > Note: `describe`s can be nested, which gives us nice output, as we'll see later.
@@ -338,8 +338,8 @@ And the last step is to add the assertion:
 it('should return the correct constant', () => {
   expect(toggleNav()).toEqual({
     type: TOGGLE_NAV
-  });
-});
+  })
+})
 ```
 
 If our `toggleNav` action works correctly, this is the output Jest will show us:

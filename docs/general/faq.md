@@ -128,7 +128,7 @@ pass actions onward to a second reducer from a lower-level route reducer like so
 function myReducerOfRoute(state, action) {
   switch (action.type) {
     case SOME_OTHER_ACTION:
-      return someOtherReducer(state, action);
+      return someOtherReducer(state, action)
   }
 }
 ```
@@ -146,14 +146,14 @@ Since a container will always be within a route, one we can simply add it to the
 ```JS
 // /containers/SomeContainer/sagas.js
 
-import { someOtherSagaFromNestedContainer } from './containers/SomeNestedContainer/sagas';
+import { someOtherSagaFromNestedContainer } from './containers/SomeNestedContainer/sagas'
 
 function* someSaga() { /* … */ }
 
 export default [
   someSaga,
   someOtherSagaFromNestedContainer,
-];
+]
 ```
 
 Or, if you have multiple sagas in the nested container:
@@ -162,14 +162,14 @@ Or, if you have multiple sagas in the nested container:
 ```JS
 // /containers/SomeContainer/sagas.js
 
-import nestedContainerSagas from './containers/SomeNestedContainer/sagas';
+import nestedContainerSagas from './containers/SomeNestedContainer/sagas'
 
 function* someSaga() { /* … */ }
 
 export default [
   someSaga,
   ...nestedContainerSagas,
-];
+]
 ```
 
 ## Using this boilerplate with WebStorm

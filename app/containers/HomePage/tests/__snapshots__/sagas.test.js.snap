@@ -6,7 +6,7 @@ Object {
     "selector": [Function],
   },
 }
-`;
+`
 
 exports[`getRepos Saga should call the repoLoadingError action if the response errors 2`] = `
 Object {
@@ -19,7 +19,7 @@ Object {
     "fn": [Function],
   },
 }
-`;
+`
 
 exports[`getRepos Saga should dispatch the reposLoaded action if it requests the data successfully 1`] = `
 Object {
@@ -29,7 +29,7 @@ Object {
     "selector": [Function],
   },
 }
-`;
+`
 
 exports[`getRepos Saga should dispatch the reposLoaded action if it requests the data successfully 2`] = `
 Object {
@@ -42,4 +42,4 @@ Object {
     "fn": [Function],
   },
 }
-`;
+`

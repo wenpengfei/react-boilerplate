@@ -23,7 +23,7 @@ text:
 ```javascript
 // Button.react.js
 
-import CheckmarkIcon from './CheckmarkIcon.react';
+import CheckmarkIcon from './CheckmarkIcon.react'
 
 function Button(props) {
   return (
@@ -31,10 +31,10 @@ function Button(props) {
       <CheckmarkIcon />
       { React.Children.only(props.children) }
     </button>
-  );
+  )
 }
 
-export default Button;
+export default Button
 ```
 
 _Note: This is a [state**less** ("dumb") component](../js/README.md#architecture-components-and-containers)_
@@ -44,13 +44,13 @@ It might be used in another component like this:
 ```javascript
 // HomePage.react.js
 
-import Button from './Button.react';
+import Button from './Button.react'
 
 class HomePage extends React.Component {
   render() {
     return(
       <Button onClick={this.doSomething}>Click me!</Button>
-    );
+    )
   }
 }
 ```
@@ -101,12 +101,12 @@ This is our Jest setup:
 
 ```javascript
 describe('<Button />', () => {
-  it('renders a <button>', () => {});
+  it('renders a <button>', () => {})
 
-  it('renders its children', () => {});
+  it('renders its children', () => {})
 
-  it('handles clicks', () => {});
-});
+  it('handles clicks', () => {})
+})
 ```
 
 Lets start with testing that it renders a `<button>`. To do that we first
@@ -116,11 +116,11 @@ Lets start with testing that it renders a `<button>`. To do that we first
 it('renders a <button>', () => {
   const renderedComponent = shallow(
     <Button></Button>
-  );
+  )
   expect(
     renderedComponent.find("button").node
-  ).toBeDefined();
-});
+  ).toBeDefined()
+})
 ```
 
 Nice! If somebody breaks our button component by having it render an `<a>` tag
@@ -132,14 +132,14 @@ exists:
 
 ```javascript
 it('renders its children', () => {
-  const text = "Click me!";
+  const text = "Click me!"
   const renderedComponent = shallow(
     <Button>{ text }</Button>
-  );
+  )
   expect(
     renderedComponent.contains(text)
-  ).toEqual(true);
-});
+  ).toEqual(true)
+})
 ```
 
 Great! Onwards to our last and most advanced test: checking that our `<Button>` handles clicks correctly. We'll use a Spy for that. A Spy is a
@@ -150,11 +150,11 @@ see that our Spy was called:
 
 ```javascript
 it('handles clicks', () => {
-  const onClickSpy = jest.fn();
-  const renderedComponent = shallow(<Button onClick={onClickSpy} />);
-  renderedComponent.find('button').simulate('click');
-  expect(onClickSpy).toHaveBeenCalled();
-});
+  const onClickSpy = jest.fn()
+  const renderedComponent = shallow(<Button onClick={onClickSpy} />)
+  renderedComponent.find('button').simulate('click')
+  expect(onClickSpy).toHaveBeenCalled()
+})
 ```
 
 And that's how you unit test your components and make sure they work correctly!

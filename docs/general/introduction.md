@@ -42,7 +42,7 @@ Note that while `react-boilerplate` includes a lot of features, many of them are
 
 Let's start with understanding why we have chosen our particular structure. It has been an [evolving discussion](https://github.com/mxstbr/react-boilerplate/issues/27), and if you have an afternoon or two we recommend you read the full thread.
 
-If not, here's the TL;DR:
+If not, here's the TLDR:
 
 - You will write your app in the `app` folder. This is the folder you will spend most, if not all, of your time in.
 - Configuration, generators and templates are in the `internals` folder.

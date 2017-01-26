@@ -1,10 +1,10 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+// import React from 'react'
+// import { shallow } from 'enzyme'
 
-// import Buttons from '../index';
+// import Buttons from '../index'
 
 describe('<Buttons />', () => {
   it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
-  });
-});
+    expect(true).toEqual(false)
+  })
+})

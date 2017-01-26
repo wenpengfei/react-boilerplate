@@ -17,7 +17,7 @@
 
 import {
   CHANGE_USERNAME,
-} from './constants';
+} from './constants'
 
 /**
  * Changes the input field of the form
@@ -30,5 +30,5 @@ export function changeUsername(name) {
   return {
     type: CHANGE_USERNAME,
     name,
-  };
+  }
 }

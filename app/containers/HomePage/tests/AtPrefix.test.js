@@ -1,27 +1,27 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from 'react'
+import { shallow } from 'enzyme'
 
-import AtPrefix from '../AtPrefix';
+import AtPrefix from '../AtPrefix'
 
 describe('<AtPrefix />', () => {
   it('should render an <span> tag', () => {
-    const renderedComponent = shallow(<AtPrefix />);
-    expect(renderedComponent.type()).toEqual('span');
-  });
+    const renderedComponent = shallow(<AtPrefix />)
+    expect(renderedComponent.type()).toEqual('span')
+  })
 
   it('should have a className attribute', () => {
-    const renderedComponent = shallow(<AtPrefix />);
-    expect(renderedComponent.prop('className')).toBeDefined();
-  });
+    const renderedComponent = shallow(<AtPrefix />)
+    expect(renderedComponent.prop('className')).toBeDefined()
+  })
 
   it('should adopt a valid attribute', () => {
-    const id = 'test';
-    const renderedComponent = shallow(<AtPrefix id={id} />);
-    expect(renderedComponent.prop('id')).toEqual(id);
-  });
+    const id = 'test'
+    const renderedComponent = shallow(<AtPrefix id={id} />)
+    expect(renderedComponent.prop('id')).toEqual(id)
+  })
 
   it('should not adopt an invalid attribute', () => {
-    const renderedComponent = shallow(<AtPrefix attribute={'test'} />);
-    expect(renderedComponent.prop('attribute')).toBeUndefined();
-  });
-});
+    const renderedComponent = shallow(<AtPrefix attribute={'test'} />)
+    expect(renderedComponent.prop('attribute')).toBeUndefined()
+  })
+})

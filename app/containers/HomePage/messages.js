@@ -3,7 +3,7 @@
  *
  * This contains all the text for the HomePage component.
  */
-import { defineMessages } from 'react-intl';
+import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   startProjectHeader: {
@@ -26,4 +26,4 @@ export default defineMessages({
     id: 'boilerplate.containers.HomePage.tryme.atPrefix',
     defaultMessage: '@',
   },
-});
+})

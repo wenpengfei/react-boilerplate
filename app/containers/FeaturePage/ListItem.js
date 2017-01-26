@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const ListItem = styled.li`
-  margin: 1em 0;
-`;
+  margin: 1em 0
+`
 
-export default ListItem;
+export default ListItem

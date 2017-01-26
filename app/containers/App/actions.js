@@ -19,7 +19,7 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
-} from './constants';
+} from './constants'
 
 /**
  * Load the repositories, this action starts the request saga
@@ -29,7 +29,7 @@ import {
 export function loadRepos() {
   return {
     type: LOAD_REPOS,
-  };
+  }
 }
 
 /**
@@ -45,7 +45,7 @@ export function reposLoaded(repos, username) {
     type: LOAD_REPOS_SUCCESS,
     repos,
     username,
-  };
+  }
 }
 
 /**
@@ -59,5 +59,5 @@ export function repoLoadingError(error) {
   return {
     type: LOAD_REPOS_ERROR,
     error,
-  };
+  }
 }
