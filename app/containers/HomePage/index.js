@@ -15,15 +15,17 @@ import { selectUsername } from './selectors'
 import * as actions from './actions'
 import ImmutableForm from './immutableForm'
 
-const HomePage = () => (
+const HomePage = ({ username, onChangeUsernameCreator }) => (
   <div>
+    <input value={username} onChange={onChangeUsernameCreator} />
     <ImmutableForm />
   </div>
 )
 
-// HomePage.propTypes = {
-//   onChangeUsernameCreator: React.PropTypes.string,
-// }
+HomePage.propTypes = {
+  username: React.PropTypes.stringss,
+  onChangeUsernameCreator: React.PropTypes.func,
+}
 
 const mapStateToProps = createStructuredSelector({
   username: selectUsername(),
