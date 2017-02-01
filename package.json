@@ -103,7 +103,7 @@
     },
     "rules": {
       "arrow-parens": [
-        "error",
+        0,
         "as-needed"
       ],
       "arrow-body-style": [
