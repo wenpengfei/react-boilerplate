@@ -23,7 +23,7 @@ const HomePage = ({ username, onChangeUsernameCreator }) => (
 )
 
 HomePage.propTypes = {
-  username: React.PropTypes.stringss,
+  username: React.PropTypes.string,
   onChangeUsernameCreator: React.PropTypes.func,
 }
 
