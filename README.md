@@ -10,7 +10,10 @@
 <div align="center">
   <!-- Build Status -->
   <a href="https://travis-ci.org/wenpengfei/react-boilerplate">
-    <img src="https://travis-ci.org/wenpengfei/react-boilerplate.svg?branch=develop" alt="Build Status" />
+    <img src="https://travis-ci.org/wenpengfei/react-boilerplate.svg?branch=develop" alt="Travis Status" />
+  </a>
+  <a href="https://ci.appveyor.com/project/wenpengfei/react-boilerplate">
+    <img src="https://ci.appveyor.com/api/projects/status/e456ymrn0g22peid/branch/master?svg=true" alt="Appveyor Status">
   </a>
   <!-- Test Coverage -->
   <a href='https://coveralls.io/github/wenpengfei/react-boilerplate?branch=master'>
